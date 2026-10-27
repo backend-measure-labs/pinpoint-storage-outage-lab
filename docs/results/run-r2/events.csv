@@ -1,0 +1,16 @@
+1793029317849,startup
+1793029351347,normal
+1793029651733,restart_normal
+1793029896667,collector_down
+1793030317061,restart_collector_down
+1793030561994,collector_down_recover
+1793030748792,collector_unresponsive
+1793031169209,restart_collector_unresponsive
+1793031414098,collector_unresponsive_recover
+1793031594628,hbase_lock_timeout
+1793032015285,restart_hbase_lock_timeout
+1793032260306,hbase_lock_timeout_recover
+1793032440859,hbase_down
+1793032861301,restart_hbase_down
+1793033106231,hbase_down_recover
+1793033295494,end

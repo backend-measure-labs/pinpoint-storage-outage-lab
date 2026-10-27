@@ -1,0 +1,16 @@
+# 제출 시점에 변경분을 보는 판정 주체. 시점은 준비 완료 전환 1회, 권한은 의견까지다.
+#
+# 이 레포의 산출물은 재현 하네스(스크립트 · 매니페스트 · 프로브 앱)와 그 결과를 해석한 README 다.
+# README 의 수치 · 판정이 하네스가 실제로 재는 것과 맞는지가 검토의 핵심이라 마크다운도 본다.
+# 제외하는 것은 하네스가 생성한 측정 원본(docs/results)뿐이다. 사람이 고칠 자리가 아니다.
+language: ko-KR
+
+reviews:
+  profile: chill
+  auto_review:
+    enabled: true
+    drafts: false                   # 초안은 건너뛴다. 작성자가 먼저 읽는 구간이다
+    auto_incremental_review: false  # 전환 시 1회. 이후 푸시는 재검토하지 않는다
+  path_filters:
+    - "!docs/results/**"
+    - "!app/gradle/wrapper/**"
