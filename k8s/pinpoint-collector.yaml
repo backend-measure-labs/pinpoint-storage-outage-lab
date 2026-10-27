@@ -1,0 +1,32 @@
+# 컬렉터는 HBase 테이블이 생긴 뒤에 띄운다. 먼저 뜨면 테이블 준비 확인(warmup)이 실패한 채 기동한다.
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: pinpoint-collector, namespace: pinpoint-lab}
+spec:
+  replicas: 1
+  selector: {matchLabels: {app: pinpoint-collector}}
+  template:
+    metadata: {labels: {app: pinpoint-collector}}
+    spec:
+      containers:
+        - name: collector
+          image: pinpointdocker/pinpoint-collector:2.5.3
+          env:
+            - {name: SPRING_PROFILES_ACTIVE, value: release}
+            - {name: PINPOINT_ZOOKEEPER_ADDRESS, value: zoo1}
+            - {name: CLUSTER_ENABLE, value: "true"}
+            - {name: FLINK_CLUSTER_ENABLE, value: "false"}
+          ports:
+            - {containerPort: 9991}
+            - {containerPort: 9992}
+            - {containerPort: 9993}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: pinpoint-collector, namespace: pinpoint-lab}
+spec:
+  selector: {app: pinpoint-collector}
+  ports:
+    - {name: agent, port: 9991}
+    - {name: stat, port: 9992}
+    - {name: span, port: 9993}

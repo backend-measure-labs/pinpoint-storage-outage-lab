@@ -1,0 +1,5 @@
+# 회차 뒤(2026-10-27) 같은 Rancher Desktop VM 에서 rdctl shell 로 읽은 값
+kernel: 6.1.75-0-virt
+transparent_hugepage/enabled: [always] madvise never
+transparent_hugepage/defrag: always defer defer+madvise [madvise] never
+khugepaged/max_ptes_none: 511
